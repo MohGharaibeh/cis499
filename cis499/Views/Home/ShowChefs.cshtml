@@ -1,0 +1,28 @@
+﻿@model IEnumerable<cis499.Models.Useraccount>
+
+@{
+    ViewData["Title"] = "ShowChefs";
+    Layout = "~/Views/Shared/HomeLayoutAfterLogin.cshtml";
+}
+
+<div class="tab-content" id="pills-tabContent" style="margin-left:100px; margin-top:200px;">
+    <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card bg-transparent border my-3 my-md-0">
+                        <img src=@Url.Content("~/images/" + item.Imagepath) alt="template by DevCRID http://www.devcrud.com/" class="rounded-0 card-img-top mg-responsive">
+                        <div class="card-body">
+                            <h4 class="pt20 pb20">@item.FullName</h4>
+                            <p class="text-white">@item.Email</p>
+                            <a asp-controller="Home" asp-action="ShowRecipeByChef" asp-route-id="@item.Id" class="btn btn-primary">Show Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<cis499.Models.RequestRecipe>
+
+@{
+    ViewData["Title"] = "ShowRecipeRequested";
+    Layout = "~/Views/Shared/HomeLayoutAfterLogin.cshtml";
+}
+
+<h1>ShowRecipeRequested</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreparationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChefAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAccount)
+            </th>
+            <th>Pay</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecipeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredient)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreparationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChefAccount.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccount.Id)
+                </td>
+
+                <td>
+                    @if (item.State == "Accepted")
+                    {
+                        <a asp-controller="Virtualbanks" asp-action="Create">Pay Now</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

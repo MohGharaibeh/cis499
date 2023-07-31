@@ -1,0 +1,60 @@
+﻿@model cis499.Models.Useraccount
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dashboard | Sign In</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/AssetsAdminDashboard/img/svg/logo.svg" type="image/x-icon">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="~/AssetsAdminDashboard/css/style.min.css">
+</head>
+<body>
+    <div class="layer"></div>
+    <main class="page-center">
+        <article class="sign-up">
+            <h1 class="sign-up__title">Welcome back!</h1>
+            <p class="sign-up__subtitle">Sign in to your account to continue</p>
+            <form asp-action="Login" class="sign-up-form form">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label class="form-label-wrapper">
+                        <p class="form-label">Email</p>
+                        <input asp-for="Email" class="form-input" type="email" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="form-label-wrapper">
+                        <p class="form-label">Password</p>
+                        <input asp-for="Password" class="form-input" type="password" required />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Sign In" class="form-btn primary-default-btn transparent-btn" />
+                </div>
+                @if (!string.IsNullOrEmpty(ViewData["LoginError"] as string))
+                {
+                    <div class="alert alert-danger">
+                        @ViewData["LoginError"]
+                    </div>
+                }
+            </form>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </article>
+    </main>
+</body>
+</html>

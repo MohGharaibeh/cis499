@@ -1,0 +1,123 @@
+﻿@model cis499.Models.RequestRecipe
+
+@{
+    Layout = "HomeLayoutAfterLogin";
+}
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+
+</head>
+<body>
+    <div class="row" style="margin-top:220px; margin-left:500px; margin-right:-200px;">
+    <div class="col-md-4">
+            <form asp-action="Create" id="requestForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                    <label asp-for="RecipeName" class="control-label">Recipe Name</label>
+                <input asp-for="RecipeName" class="form-control" />
+                <span asp-validation-for="RecipeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredient" class="control-label"></label>
+                <input asp-for="Ingredient" class="form-control" />
+                <span asp-validation-for="Ingredient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                    <label asp-for="PreparationTime" class="control-label">Preparation Time</label>
+                <input asp-for="PreparationTime" class="form-control" />
+                <span asp-validation-for="PreparationTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ChefAccountId" class="control-label"></label>
+                <select asp-for="ChefAccountId" class ="form-control" asp-items="ViewBag.ChefAccountId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>
+
+
+
+@*<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+    <div style="margin-top:220px; margin-left:500px; margin-right:-200px;">
+        <h4>Request Recipe</h4>
+        <div class="row">
+            <div class="col-md-4">
+                <form id="requestForm" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="RecipeName" class="control-label">Recipe Name</label>
+                        <input asp-for="RecipeName" class="form-control" />
+                        <span asp-validation-for="RecipeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Ingredient" class="control-label">Ingredients</label>
+                        <input asp-for="Ingredient" class="form-control" />
+                        <span asp-validation-for="Ingredient" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PreparationTime" class="control-label">Preparation Time (Minute)</label>
+                        <input asp-for="PreparationTime" class="form-control" />
+                        <span asp-validation-for="PreparationTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ChefAccountId" class="control-label">Chef</label>
+                        <select asp-for="ChefAccountId" class="form-control" asp-items="ViewBag.Chefaccountid"></select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#requestForm').submit(function (e) {
+                e.preventDefault(); // Prevent form submission
+
+                // Perform any necessary form validation here
+
+                // Show the message
+                showMessage("Your request has been sent.");
+            });
+
+            function showMessage(message) {
+                // Create a div element to hold the message
+                var messageDiv = $('<div>').addClass('alert alert-success').text(message);
+
+                // Append the message to the body
+                $('body').append(messageDiv);
+
+                // Remove the message after 3 seconds
+                setTimeout(function () {
+                    messageDiv.remove();
+                }, 3000);
+            }
+        });
+    </script>
+
+</body>
+</html>*@

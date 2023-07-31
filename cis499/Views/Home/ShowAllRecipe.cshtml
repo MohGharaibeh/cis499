@@ -1,0 +1,55 @@
+﻿@model IEnumerable<cis499.Models.Recipe>
+
+@{
+    ViewData["Title"] = "ShowAllRecipe";
+    Layout = "~/Views/Shared/HomeLayoutAfterLogin.cshtml";
+}
+<div class="tab-content" id="pills-tabContent" style="margin-left:100px; margin-top:200px; margin-right:20px;">
+    <div class="row">
+        <div class="col-6">
+            <form asp-action="ShowAllRecipe" method="post">
+                <input type="text" name="name" class="form-control" />
+                <button class="btn btn-warning">Search</button>
+            </form>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ingredients)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Steps)
+                </th>
+                <th>Category</th>
+                <th>Chef</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ingredients)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Steps)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CategoryRecipe.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserAccount.FullName)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

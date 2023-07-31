@@ -1,0 +1,68 @@
+﻿@model IEnumerable<cis499.Models.RequestRecipe>
+
+@{
+    ViewData["Title"] = "ShowRequestFromUser";
+    Layout = "~/Views/Shared/ChefLayout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecipeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreparationTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RequestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChefAccount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserAccount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecipeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ingredient)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PreparationTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChefAccount.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccount.FullName)
+                </td>
+                <td>
+                    <a href="@Url.Action("AcceptRequest", "Chefs", new {id = item.Id})">Accept</a>
+                    <a href="@Url.Action("RejectRecuest", "Chefs", new {id = item.Id})">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<cis499.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "ReviewTestimonial";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Review Testimonial</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                Feedback Message
+            </th>
+            <th>
+                User Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestMessage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccount.FullName)
+                </td>
+                <td>
+                    <a href="@Url.Action("AcceptTestimonial", "Admin", new { id = item.Id })">Accept</a> |
+                    <a href="@Url.Action("RejectTestimonial", "Admin", new { id = item.Id })">Reject</a>
+                </td>
+                @*<td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

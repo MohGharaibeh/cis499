@@ -1,0 +1,80 @@
+﻿@model IEnumerable<cis499.Models.Recipe>
+
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<div class="container">
+    <form action="Search" method="post" class="form">
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-warning">Search</button>
+    </form>
+
+    <div class="row">
+        <div class="col-6">
+            <form asp-action="Search" method="post">
+                <input type="date" name="startDate" class="form-control" />
+                <input type="date" name="endDate" class="form-control" />
+                <button class="btn btn-warning">Search</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 stretch-card grid-margin">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title mb-0">Recipe </p>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Category
+                                    </th>
+                                    <th>
+                                        Chef
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryRecipe.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserAccount.FullName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AddedDate)
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

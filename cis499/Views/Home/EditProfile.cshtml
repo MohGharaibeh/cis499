@@ -1,0 +1,227 @@
+﻿@model cis499.Models.Useraccount
+
+@{
+
+    Layout = "HomeLayoutAfterLogin";
+
+}
+@*<h1>Edit Profile</h1>
+
+<h4>Useraccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Home" asp-action="EditProfile" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Fname" class="control-label">First Name</label>
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lname" class="control-label">Last Name</label>
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label">Email</label>
+                <input asp-for="Email" type="email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Image</label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Roleid" />
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <title>Edit profile page - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+
+        body {
+/*            background: #f5f5f5;
+*/            background-color: #343a40;
+        }
+        /**
+         * Panels
+         */
+        /*** General styles ***/
+        .panel {
+            box-shadow: none;
+        }
+
+        .panel-heading {
+            border-bottom: 0;
+        }
+
+        .panel-title {
+            font-size: 17px;
+        }
+
+            .panel-title > small {
+                font-size: .75em;
+                color: #999999;
+            }
+
+        .panel-body *:first-child {
+            margin-top: 0;
+        }
+
+        .panel-footer {
+            border-top: 0;
+        }
+
+        .panel-default > .panel-heading {
+            color: #333333;
+            background-color: transparent;
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+
+        form label {
+            color: #999999;
+            font-weight: 400;
+        }
+
+        .form-horizontal .form-group {
+            margin-left: -15px;
+            margin-right: -15px;
+        }
+
+        .form-horizontal .control-label {
+            text-align: right;
+            margin-bottom: 0;
+            padding-top: 7px;
+        }
+
+
+        .profile__contact-info-icon {
+            float: left;
+            font-size: 18px;
+            color: #999999;
+        }
+
+        .profile__contact-info-body {
+            overflow: hidden;
+            padding-left: 20px;
+            color: #999999;
+        }
+
+        .profile-avatar {
+            width: 200px;
+            position: relative;
+            margin: 0px auto;
+            margin-top: 196px;
+            border: 4px solid #f3f3f3;
+        }
+    </style>
+</head>
+<body>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container bootstrap snippets bootdeys">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <form asp-controller="Home" asp-action="EditProfile" enctype="multipart/form-data" class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-body text-center">
+                            <img src=@Url.Content("~/images/" + Model.Imagepath) class="img-circle profile-avatar" alt="User avatar">
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">User info</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">First Name</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Fname" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Last Name</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Lname" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="Email" type="email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="ImageFile" type="image" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Security</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Current password</label>
+                                <div class="col-sm-10">
+                                    <input name="currentPassword" type="password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">New password</label>
+                                <div class="col-sm-10">
+                                    <input name="newPassword" type="password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(ViewData["PasswordError"] as string))
+                    {
+                        <div class="alert alert-danger">
+                            @ViewData["PasswordError"]
+                        </div>
+                    }
+                    <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Roleid" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>
